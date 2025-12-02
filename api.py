@@ -24,10 +24,26 @@ def fetch_weather(city):
         return response.json()
     else:
         return None
-    
+
+def parse_weather(data):
+    city = data["name"]
+    temperature = data["main"]["temp"]
+    description = data["weather"][0]["description"]
+    humidity = data["main"]["humidity"]
+    wind_speed = data["wind"]["speed"]
+
+    return {
+        "city": city,
+        "temperature": temperature,
+        "description": description,
+        "humidiy": humidity,
+        "wind_speed": wind_speed
+    }
+         
 #Example
 
 city = "London"
 weather_data = fetch_weather(city)
 if weather_data:
-    print(weather_data)
+    parsed_data = parse_weather(weather_data)
+    print(parsed_data)
