@@ -35,7 +35,7 @@ def parse_weather(data):
         "city": data["name"],
         "temperature": data["main"]["temp"],
         "description": data["weather"][0]["description"],
-        "humidiy": data["main"]["humidity"],
+        "humidity": data["main"]["humidity"],
         "wind_speed": data["wind"]["speed"]
     }
 

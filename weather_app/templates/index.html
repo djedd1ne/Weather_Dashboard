@@ -3,22 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashbord</title>
+    <title>Weather Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">    
 </head>
 <body>
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 8s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 10s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 12s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 14s;"></div>
+
     <div class="container">
-        <h1>Weather Dashbord</h1>
+        <h1>⛅ Weather Dashboard</h1>
         <form method="POST">
-            <input type="text" name="city" placeholder="Enter City" required>
+            <input type="text" name="city" placeholder="Enter city name..." required>
             <button type="submit">Get Weather</button>
         </form>
         {% if weather %}
         <div class="weather-card">
             <h2>{{ weather.city }}</h2>
-            <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
-            <p><strong>Description:</strong> {{ weather.description }}</p>
-            <p><strong>Humidity:</strong> {{weather.wind_speed}} %</p>
-            <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
+            <div class="weather-item">
+                <span class="icon">🌡️</span>
+                <span class="label">Temperature</span>
+                <span class="value">{{ weather.temperature }}°C</span>
+            </div>
+            <div class="weather-item">
+                <span class="icon">☁️</span>
+                <span class="label">Description</span>
+                <span class="value">{{ weather.description }}</span>
+            </div>
+            <div class="weather-item">
+                <span class="icon">💧</span>
+                <span class="label">Humidity</span>
+                <span class="value">{{ weather.humidity }} %</span>
+            </div>
+            <div class="weather-item">
+                <span class="icon">💨</span>
+                <span class="label">Wind Speed</span>
+                <span class="value">{{ weather.wind_speed }} m/s</span>
+            </div>
         </div>
         {% endif %}
     </div>
