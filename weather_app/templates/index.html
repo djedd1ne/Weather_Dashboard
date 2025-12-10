@@ -24,6 +24,13 @@
             <input type="text" name="city" placeholder="Enter city name..." required>
             <button type="submit">Get Weather</button>
         </form>
+
+        {% if error %}
+        <div class="error-message">
+            <span>⚠️</span> {{ error }}
+        </div>
+        {% endif %}
+        
         {% if weather %}
         <div class="weather-card">
             <h2>{{ weather.city }}</h2>
